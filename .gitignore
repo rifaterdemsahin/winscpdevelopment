@@ -1,0 +1,4 @@
+# Ignore WinSCP log files
+*.log
+# Ignore any credentials files
+credentials.txt
