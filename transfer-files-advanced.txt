@@ -1,0 +1,30 @@
+@echo off
+setlocal
+
+REM Set log file path
+set LOGFILE=C:\local\path\script_log.txt
+
+REM Start logging
+echo [%date% %time%] Script started. >> %LOGFILE%
+
+REM Connect to the server using WinSCP and log the output
+winscp.com /log=%LOGFILE% /command ^
+    "open sftp://username:password@host.example.com -hostkey=""ssh-rsa 2048 xxxxxxxxxxx...=""" ^
+    "cd /remote/path" ^
+    "get remote-file.txt C:\local\path\downloaded-file.txt" ^
+    "put C:\local\path\new-file.txt remote-file.txt" ^
+    "close" ^
+    "exit"
+
+REM Check if the WinSCP command was successful
+if errorlevel 1 (
+    echo [%date% %time%] Error occurred during file transfer. >> %LOGFILE%
+    exit /b 1
+) else (
+    echo [%date% %time%] File transfer completed successfully. >> %LOGFILE%
+)
+
+echo [%date% %time%] Script finished. >> %LOGFILE%
+
+endlocal
+exit /b 0
