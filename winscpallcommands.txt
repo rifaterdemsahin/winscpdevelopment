@@ -1,1 +1,58 @@
-Commands listed
+WinSCP provides a variety of commands that can be used to interact with remote servers, particularly through its scripting capabilities. Below is a list of the most commonly used WinSCP commands:
+
+### Session Commands
+- `open` - Opens a session to a remote server.
+- `close` - Closes an opened session.
+- `option` - Sets various options for the session.
+- `exit` - Closes WinSCP.
+
+### File Transfer Commands
+- `get` - Downloads a file or directory from the remote server.
+- `put` - Uploads a file or directory to the remote server.
+- `synchronize` - Synchronizes directories between the local and remote servers.
+- `mv` (move) - Renames or moves a file on the remote server.
+- `rm` (remove) - Deletes a file on the remote server.
+- `rmdir` - Deletes a directory on the remote server.
+- `mkdir` - Creates a directory on the remote server.
+
+### File Management Commands
+- `ls` (list) - Lists files in a directory on the remote server.
+- `ll` (long list) - Lists files in a directory on the local system.
+- `cd` (change directory) - Changes the working directory on the remote server.
+- `lcd` (local change directory) - Changes the working directory on the local system.
+- `pwd` (print working directory) - Prints the current working directory on the remote server.
+- `lpwd` (local print working directory) - Prints the current working directory on the local system.
+
+### Miscellaneous Commands
+- `chmod` - Changes file permissions on the remote server.
+- `chown` - Changes the ownership of a file on the remote server.
+- `ln` (link) - Creates a symbolic link on the remote server.
+- `touch` - Changes file timestamps on the remote server.
+- `clear` - Clears the command line screen.
+
+### Scripting and Automation
+- `script` - Executes a script in WinSCP.
+- `call` - Executes an arbitrary remote command.
+- `pause` - Pauses the execution of a script.
+- `if`, `else`, `endif` - Conditional execution of script commands.
+- `goto` - Jumps to a labeled point in the script.
+- `exit` - Terminates the script execution.
+
+### Logging and Output Commands
+- `log` - Configures logging of the session.
+- `option` (echo) - Controls the output of command execution to the console.
+
+### Example Usage
+Here’s a basic example of a WinSCP script:
+
+```cmd
+open sftp://user:password@example.com
+option transfer binary
+put localfile.txt /remotepath/
+close
+exit
+```
+
+This script connects to a remote server, uploads a file in binary mode, and then closes the connection.
+
+These commands can be combined in various ways to create powerful automation scripts for file transfer and remote server management.
